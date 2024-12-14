@@ -1,6 +1,6 @@
 ﻿namespace Cafeshochka
 {
-    partial class InputFormEmployee
+    partial class AddEmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,6 @@
             SaveEmployee = new Button();
             Username = new TextBox();
             UsernameTextBox = new TextBox();
-            button1 = new Button();
             SuspendLayout();
             // 
             // RoleComboBox
@@ -133,24 +132,13 @@
             UsernameTextBox.Name = "UsernameTextBox";
             UsernameTextBox.Size = new Size(121, 23);
             UsernameTextBox.TabIndex = 11;
-            UsernameTextBox.Text = "ФИО";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(223, 188);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 12;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            UsernameTextBox.TextChanged += UsernameTextBox_TextChanged;
             // 
             // InputFormEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(310, 248);
-            Controls.Add(button1);
             Controls.Add(UsernameTextBox);
             Controls.Add(Username);
             Controls.Add(SaveEmployee);
@@ -181,6 +169,5 @@
         private Button SaveEmployee;
         private TextBox Username;
         private TextBox UsernameTextBox;
-        private Button button1;
     }
 }

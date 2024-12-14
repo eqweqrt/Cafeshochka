@@ -1,44 +1,22 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cafeshochka
 {
     public partial class ManageEmployee : Form
     {
+        private string connectionString = "Host=localhost;Username=postgres;Password=postgres;Database=postgres";
+
         public ManageEmployee()
         {
             InitializeComponent();
             LoadData();
         }
 
-        private string connectionString = "Host=localhost;Username=postgres;Password=postgres;Database=postgres";
-
         private void LoadData()
         {
-            // Создаем DataTable
-            /*DataTable dataTable = new DataTable();
-
-            // Добавляем столбцы
-            dataTable.Columns.Add("ID", typeof(int));
-            dataTable.Columns.Add("Name", typeof(string));
-            dataTable.Columns.Add("Age", typeof(int));
-
-            // Добавляем строки
-            dataTable.Rows.Add(1, "John Doe", 30);
-            dataTable.Rows.Add(2, "Jane Smith", 25);
-            dataTable.Rows.Add(3, "Sam Brown", 35);
-
-            // Привязываем DataTable к DataGridView
-            dataGridView1.DataSource = dataTable;*/
-
             using (var connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
@@ -58,8 +36,40 @@ namespace Cafeshochka
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            var inputForm = new InputFormEmployee();
-            inputForm.Show();
+            var addEmployee = new AddEmployeeForm();
+            addEmployee.Show();
+        }
+
+        private void buttonEditEmployee_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                // Получение данных из выбранной строки
+                int id = (int)selectedRow.Cells["UserId"].Value;
+                string name = selectedRow.Cells["Username"].Value.ToString();
+                string password = selectedRow.Cells["UserPassword"].Value.ToString();
+                string role = selectedRow.Cells["UserRole"].Value.ToString();
+                string status = selectedRow.Cells["UserStatus"].Value.ToString();
+
+                // Открытие формы редактирования с данными выбранной строки
+                using (var editForm = new EditEmployeeForm(id, name, password, role, status))
+                {
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Обновление данных в DataGridView
+                        selectedRow.Cells["Username"].Value = editForm.Username;
+                        selectedRow.Cells["UserPassword"].Value = editForm.UserPassword;
+                        selectedRow.Cells["UserRole"].Value = editForm.UserRole;
+                        selectedRow.Cells["UserStatus"].Value = editForm.UserStatus;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to edit.");
+            }
         }
 
     }

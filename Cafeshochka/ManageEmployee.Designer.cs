@@ -20,7 +20,7 @@ namespace Cafeshochka
         {
             dataGridView1 = new DataGridView();
             buttonAddEmployee = new Button();
-            buttonEditEmploye = new Button();
+            buttonEditEmployee = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -43,21 +43,21 @@ namespace Cafeshochka
             buttonAddEmployee.UseVisualStyleBackColor = true;
             buttonAddEmployee.Click += buttonAddEmployee_Click;
             // 
-            // buttonEditEmploye
+            // buttonEditEmployee
             // 
-            buttonEditEmploye.Location = new Point(174, 234);
-            buttonEditEmploye.Name = "buttonEditEmploye";
-            buttonEditEmploye.Size = new Size(154, 55);
-            buttonEditEmploye.TabIndex = 2;
-            buttonEditEmploye.Text = "Изменить";
-            buttonEditEmploye.UseVisualStyleBackColor = true;
+            buttonEditEmployee.Location = new Point(174, 234);
+            buttonEditEmployee.Name = "buttonEditEmployee";
+            buttonEditEmployee.Size = new Size(154, 55);
+            buttonEditEmployee.TabIndex = 0;
+            buttonEditEmployee.Text = "Изменить";
+            buttonEditEmployee.Click += buttonEditEmployee_Click;
             // 
             // ManageEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
-            Controls.Add(buttonEditEmploye);
+            Controls.Add(buttonEditEmployee);
             Controls.Add(buttonAddEmployee);
             Controls.Add(dataGridView1);
             Margin = new Padding(4, 3, 4, 3);
@@ -68,6 +68,6 @@ namespace Cafeshochka
         }
 
         private Button buttonAddEmployee;
-        private Button buttonEditEmploye;
+        private Button buttonEditEmployee;
     }
 }

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Cafeshochka
 {
-    public partial class InputFormEmployee : Form
+    public partial class AddEmployeeForm : Form
     {
-        public InputFormEmployee()
+        public AddEmployeeForm()
         {
             InitializeComponent();
         }
@@ -66,6 +66,11 @@ namespace Cafeshochka
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UsernameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
